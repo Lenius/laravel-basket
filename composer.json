@@ -10,10 +10,10 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=5.3.0",
-        "laravel/framework": "4.*",
-        "lenius/basket": "dev-master"
+        "laravel/framework": "4.*"
     },
     "require-dev": {
+        "lenius/basket": "dev-master",
         "phpunit/phpunit": "3.7.*"
     },
     "autoload": {
