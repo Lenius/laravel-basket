@@ -1,4 +1,5 @@
 Laravel Shopping Basket Package
+[![Total Downloads](https://poser.pugx.org/lenius/laravel-basket/downloads.svg)](https://packagist.org/packages/lenius/laravel-basket)
 ============
 
 Laravel Facade and Service Provider for Lenius\Basket
