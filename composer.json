@@ -9,12 +9,12 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "php": ">=5.4.0",
-        "laravel/framework": "4.*"
+        "php": ">=7.0.0",
+        "laravel/framework": "5.*"
     },
     "require-dev": {
-        "lenius/basket": "dev-master",
-        "phpunit/phpunit": "4.1.*"
+        "lenius/basket": "~1.0",
+        "phpunit/phpunit": "~6.0"
     },
     "autoload": {
         "psr-0": {
