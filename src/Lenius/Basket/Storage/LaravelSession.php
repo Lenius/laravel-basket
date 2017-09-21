@@ -21,9 +21,14 @@
 namespace Lenius\Basket\Storage;
 
 use Lenius\Basket\Item;
+use Illuminate\Support\Facades\Session;
+use Lenius\Basket\StorageInterface;
 
 
-class LaravelSession implements \Lenius\Basket\StorageInterface
+/**
+ * @property string id
+ */
+class LaravelSession implements StorageInterface
 {
     protected $identifier;
     protected static $cart = array();
@@ -50,7 +55,8 @@ class LaravelSession implements \Lenius\Basket\StorageInterface
 
     /**
      * Retrieve the cart data
-     * 
+     *
+     * @param bool $asArray
      * @return array
      */
     public function &data($asArray = false)
@@ -90,7 +96,7 @@ class LaravelSession implements \Lenius\Basket\StorageInterface
      * Get a single cart item by id
      *
      * @param mixed $identifier
-     * @return Item The item class
+     * @return bool|Item
      * @internal param mixed $id The item id
      */
     public function item($identifier)
@@ -108,7 +114,7 @@ class LaravelSession implements \Lenius\Basket\StorageInterface
      * Returns the first occurance of an item with a given id
      * 
      * @param  string $id The item id
-     * @return Item       Item object
+     * @return bool|Item
      */
     public function find($id)
     {
@@ -173,6 +179,9 @@ class LaravelSession implements \Lenius\Basket\StorageInterface
         return $this->identifier;
     }
 
+    /**
+     * Save Cart
+     */
     protected function saveCart()
     {
         $data = static::$cart;

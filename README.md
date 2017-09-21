@@ -11,6 +11,8 @@ To use, simply install the package via Composer and then add the following to yo
 
 ```php
 'Lenius\Basket\BasketServiceProvider',
+
+'Basket' => Lenius\basket\Facades\Basket::class,
 ```
 
 You should then be good to go and be able to access the basket using the following static interface:
