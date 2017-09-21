@@ -17,8 +17,18 @@
         "phpunit/phpunit": "~6.0"
     },
     "autoload": {
-        "psr-0": {
-            "Lenius": "src/"
+        "psr-4": {
+            "Lenius\\Basket\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Lenius\\Basket\\BasketServiceProvider"
+            ],
+            "aliases": {
+                "Basket": "Lenius\\Basket\\Facades\\Basket"
+            }
         }
     }
 }

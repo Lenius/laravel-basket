@@ -21,7 +21,7 @@
 namespace Lenius\Basket\Storage;
 
 use Lenius\Basket\Item;
-use Session;
+
 
 class LaravelSession implements \Lenius\Basket\StorageInterface
 {
@@ -70,9 +70,10 @@ class LaravelSession implements \Lenius\Basket\StorageInterface
 
     /**
      * Check if the item exists in the cart
-     * 
-     * @param  mixed  $id
-     * @return boolean
+     *
+     * @param mixed $identifier
+     * @return bool
+     * @internal param mixed $id
      */
     public function has($identifier)
     {
@@ -87,9 +88,10 @@ class LaravelSession implements \Lenius\Basket\StorageInterface
 
     /**
      * Get a single cart item by id
-     * 
-     * @param  mixed $id The item id
-     * @return Item  The item class
+     *
+     * @param mixed $identifier
+     * @return Item The item class
+     * @internal param mixed $id The item id
      */
     public function item($identifier)
     {
@@ -146,8 +148,9 @@ class LaravelSession implements \Lenius\Basket\StorageInterface
 
     /**
      * Set the cart identifier
-     * 
-     * @param string $identifier
+     *
+     * @param string $id
+     * @internal param string $identifier
      */
     public function setIdentifier($id)
     {

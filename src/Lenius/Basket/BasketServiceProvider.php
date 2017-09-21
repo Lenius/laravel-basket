@@ -35,10 +35,10 @@ class BasketServiceProvider extends ServiceProvider
         });
 
         // Shortcut so developers don't need to add an Alias in app/config/app.php
-        $this->app->booting(function()
-        {
-            $loader = AliasLoader::getInstance();
-            $loader->alias('Basket', 'Lenius\Basket\Facade');
-        });
+        //$this->app->booting(function()
+        //{
+        //    $loader = AliasLoader::getInstance();
+        //    $loader->alias('Basket', 'Lenius\Basket\Basket');
+        //});
     }
 }
