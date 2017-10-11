@@ -1,9 +1,12 @@
 {
     "name": "lenius/laravel-basket",
     "description": "Shopping basket package",
+    "homepage": "https://github.com/Lenius/laravel-basket",
+    "keywords": ["e-commerce", "shopping"],
+    "license": "MIT",
     "authors": [
         {
-            "name": "Lenius",
+            "name": "Carsten Jonstrup",
             "email": "info@lenius.dk"
         }
     ],
