@@ -14,7 +14,7 @@
     "require": {
         "php": ">=7.0.0",
         "laravel/framework": "5.*",
-        "lenius/basket": "~1.0"
+        "lenius/basket": "~2.0"
     },
     "require-dev": {
         "phpunit/phpunit": "~6.0"
