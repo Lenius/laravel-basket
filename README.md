@@ -1,6 +1,6 @@
 Laravel Shopping Basket Package
 ============
-[![Total Downloads](https://poser.pugx.org/lenius/laravel-basket/downloads.svg)](https://packagist.org/packages/lenius/laravel-basket)
+[![Total Downloads](https://poser.pugx.org/lenius/laravel-basket/downloads.svg)](https://packagist.org/packages/lenius/laravel-basket) [![StyleCI](https://styleci.io/repos/12018252/shield)](https://styleci.io/repos/12018252) [![Latest Stable Version](https://poser.pugx.org/Lenius/laravel-basket/v/stable)](https://packagist.org/packages/Lenius/laravel-basket) [![License](https://poser.pugx.org/Lenius/laravel-basket/license)](https://packagist.org/packages/Lenius/laravel-basket)
 
 Laravel Facade and Service Provider for Lenius\Basket
 
