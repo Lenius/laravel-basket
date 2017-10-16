@@ -10,20 +10,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @package lenius/basket
  * @author Carsten Jonstrup<info@lenius.dk>
  * @copyright 2013 Lenius.
- * @version dev
- * @link http://github.com/lenius/basket
  *
+ * @version dev
+ *
+ * @link http://github.com/lenius/basket
  */
 
 namespace Lenius\Basket\Storage;
 
-use Lenius\Basket\Item;
 use Illuminate\Support\Facades\Session;
+use Lenius\Basket\Item;
 use Lenius\Basket\StorageInterface;
-
 
 /**
  * @property string id
@@ -31,19 +30,22 @@ use Lenius\Basket\StorageInterface;
 class LaravelSession implements StorageInterface
 {
     protected $identifier;
-    protected static $cart = array();
+    protected static $cart = [];
 
     public function restore()
     {
         $carts = Session::get('cart');
 
-        if ($carts) static::$cart = $carts;
+        if ($carts) {
+            static::$cart = $carts;
+        }
     }
 
     /**
-     * Add or update an item in the cart
-     * 
-     * @param  Item   $item The item to insert or update
+     * Add or update an item in the cart.
+     *
+     * @param Item $item The item to insert or update
+     *
      * @return void
      */
     public function insertUpdate(Item $item)
@@ -54,16 +56,19 @@ class LaravelSession implements StorageInterface
     }
 
     /**
-     * Retrieve the cart data
+     * Retrieve the cart data.
      *
      * @param bool $asArray
+     *
      * @return array
      */
     public function &data($asArray = false)
     {
-        $cart =& static::$cart[$this->id];
+        $cart = &static::$cart[$this->id];
 
-        if ( ! $asArray) return $cart;
+        if (!$asArray) {
+            return $cart;
+        }
 
         $data = $cart;
 
@@ -75,62 +80,68 @@ class LaravelSession implements StorageInterface
     }
 
     /**
-     * Check if the item exists in the cart
+     * Check if the item exists in the cart.
      *
      * @param mixed $identifier
+     *
      * @return bool
+     *
      * @internal param mixed $id
      */
     public function has($identifier)
     {
         foreach (static::$cart[$this->id] as $item) {
-
-            if ($item->identifier == $identifier) return true;
-
+            if ($item->identifier == $identifier) {
+                return true;
+            }
         }
 
         return false;
     }
 
     /**
-     * Get a single cart item by id
+     * Get a single cart item by id.
      *
      * @param mixed $identifier
+     *
      * @return bool|Item
+     *
      * @internal param mixed $id The item id
      */
     public function item($identifier)
     {
         foreach (static::$cart[$this->id] as $item) {
-
-            if ($item->identifier == $identifier) return $item;
-
+            if ($item->identifier == $identifier) {
+                return $item;
+            }
         }
 
         return false;
     }
 
     /**
-     * Returns the first occurance of an item with a given id
-     * 
-     * @param  string $id The item id
+     * Returns the first occurance of an item with a given id.
+     *
+     * @param string $id The item id
+     *
      * @return bool|Item
      */
     public function find($id)
     {
         foreach (static::$cart[$this->id] as $item) {
-
-            if ($item->id == $id) return $item;
-
+            if ($item->id == $id) {
+                return $item;
+            }
         }
 
         return false;
     }
-    
+
     /**
-     * Remove an item from the cart
-     * 
-     * @param  mixed $id
+     * Remove an item from the cart.
+     *
+     * @param mixed $id
+     *
      * @return void
      */
     public function remove($id)
@@ -141,37 +152,38 @@ class LaravelSession implements StorageInterface
     }
 
     /**
-     * Destroy the cart
-     * 
+     * Destroy the cart.
+     *
      * @return void
      */
     public function destroy()
     {
-        static::$cart[$this->id] = array();
+        static::$cart[$this->id] = [];
 
         $this->saveCart();
     }
 
     /**
-     * Set the cart identifier
+     * Set the cart identifier.
      *
      * @param string $id
+     *
      * @internal param string $identifier
      */
     public function setIdentifier($id)
     {
         $this->id = $id;
 
-        if ( ! array_key_exists($this->id, static::$cart)) {
-            static::$cart[$this->id] = array();
+        if (!array_key_exists($this->id, static::$cart)) {
+            static::$cart[$this->id] = [];
         }
 
         $this->saveCart();
     }
 
     /**
-     * Return the current cart identifier
-     * 
+     * Return the current cart identifier.
+     *
      * @return void
      */
     public function getIdentifier()
@@ -180,7 +192,7 @@ class LaravelSession implements StorageInterface
     }
 
     /**
-     * Save Cart
+     * Save Cart.
      */
     protected function saveCart()
     {
