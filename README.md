@@ -4,8 +4,13 @@ Laravel Shopping Basket Package
 
 Laravel Facade and Service Provider for Lenius\Basket
 
-Installation
----
+## Installation
+
+Using [composer](https://packagist.org/packages/lenius/laravel-basket):
+
+```bash
+$ composer require lenius/laravel-basket
+```
 
 To use, simply install the package via Composer and then add the following to your app/config/app.php to the service providers array:
 

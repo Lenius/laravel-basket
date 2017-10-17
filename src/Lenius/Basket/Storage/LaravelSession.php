@@ -4,16 +4,16 @@
  * This file is part of Lenius Basket, a PHP package to handle
  * your shopping basket.
  *
- * Copyright (c) 2013 Lenius.
+ * Copyright (c) 2017 Lenius.
  * http://github.com/lenius/basket
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
  * @author Carsten Jonstrup<info@lenius.dk>
- * @copyright 2013 Lenius.
+ * @copyright 2017 Lenius.
  *
- * @version dev
+ * @version production
  *
  * @link http://github.com/lenius/basket
  */
@@ -26,6 +26,7 @@ use Lenius\Basket\StorageInterface;
 
 /**
  * @property string id
+ * @property string identifier
  */
 class LaravelSession implements StorageInterface
 {
@@ -84,7 +85,7 @@ class LaravelSession implements StorageInterface
      *
      * @param mixed $identifier
      *
-     * @return bool
+     * @return bool|Item
      *
      * @internal param mixed $id
      */
@@ -188,7 +189,7 @@ class LaravelSession implements StorageInterface
      */
     public function getIdentifier()
     {
-        return $this->identifier;
+        return $this->id;
     }
 
     /**
