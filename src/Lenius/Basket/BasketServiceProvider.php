@@ -22,9 +22,9 @@
 namespace Lenius\Basket;
 
 use Illuminate\Support\ServiceProvider;
+use Lenius\Basket\Console\EcommerceCommand;
 use Lenius\Basket\Identifier\Cookie as CookieIdentifier;
 use Lenius\Basket\Storage\LaravelSession as SessionStore;
-use Lenius\Basket\Console\EcommerceCommand;
 
 class BasketServiceProvider extends ServiceProvider
 {

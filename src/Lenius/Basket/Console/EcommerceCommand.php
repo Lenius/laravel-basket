@@ -25,7 +25,7 @@ class EcommerceCommand extends Command
     ];
 
     /**
-     * Languages supported
+     * Languages supported.
      *
      * @var array
      */
@@ -63,7 +63,7 @@ class EcommerceCommand extends Command
 
         $this->exportLanguages();
 
-        if (! $this->option('views')) {
+        if (!$this->option('views')) {
             file_put_contents(
                 app_path('Http/Controllers/BasketController.php'),
                 $this->compileControllerStub()
