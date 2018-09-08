@@ -49,7 +49,14 @@ class BasketController extends Controller
             'price'    => 130,
             'quantity' => 2,
             'tax'      => 25,
-            'weight' => 200
+            'weight' => 200,
+            'options'  => [
+                [
+                    'name'  => 'size',
+                    'value' => 'L',
+                    'price' => 50,
+                ],
+            ],
         ));
 
         return redirect()->route('basket')->with('status', 'Card got demo data');
@@ -66,6 +73,80 @@ class BasketController extends Controller
     }
 
     /**
+     * Update basket with quantity.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $data)
+    {
+        $items = $data->input('quantity');
+
+        if($items) {
+            foreach ($items as $itemIdentifier => $quantity) {
+                if($item = Basket::item($itemIdentifier)) {
+                    if($quantity > 0){
+                        $item->quantity = $quantity;
+                    }else{
+                        $item->remove();
+                    }
+                }
+            }
+        }
+
+        return redirect()->route('basket')->with('status', 'items updated');
+    }
+
+    /**
+     * Inc basket item.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function inc($itemIdentifier)
+    {
+        if($item = Basket::item($itemIdentifier)) {
+            if($item->quantity > 0){
+                $item->quantity++;
+            }else{
+                $item->remove();
+            }
+        }
+
+        return redirect()->route('basket')->with('status', 'item '.$itemIdentifier.' inc!');
+    }
+
+    /**
+     * Dec basket item.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function dec($itemIdentifier)
+    {
+        if($item = Basket::item($itemIdentifier)) {
+            if($item->quantity > 1){
+                $item->quantity--;
+            }else{
+                $item->remove();
+            }
+        }
+
+        return redirect()->route('basket')->with('status', 'item '.$itemIdentifier.' dec!');
+    }
+
+    /**
+     * Delete basket item.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function delete($itemIdentifier)
+    {
+        if($item = Basket::item($itemIdentifier)) {
+            $item->remove();
+        }
+
+        return redirect()->route('basket')->with('status', 'item '.$itemIdentifier.' removed!');
+    }
+
+    /**
      * Destroy basket.
      *
      * @return \Illuminate\Http\Response
@@ -73,6 +154,7 @@ class BasketController extends Controller
     public function destroy()
     {
         Basket::destroy();
+        
         return redirect()->route('basket')->with('status', 'Card destroyed!');
     }
 }

@@ -4,9 +4,12 @@ Route::group(['prefix' => 'basket'], function()
 {
     Route::get('/', ['as' => 'basket', 'uses' => 'BasketController@index']);
     Route::post('/', ['as' => 'basket', 'uses' => 'BasketController@update']);
-    Route::get('/demo', ['as' => 'basket.demo', 'uses' => 'BasketController@demo']);
-    Route::any('{id}/add',['as' => 'item.add', 'uses' => 'BasketController@add'])->where('id', '[0-9]+');
-    Route::get('{id}/remove',['as' => 'item.remove', 'uses' => 'BasketController@delete']);
+    Route::any('{id}/add',['as' => 'basket.item.add', 'uses' => 'BasketController@add'])->where('id', '[0-9]+');
+    Route::get('{id}/remove',['as' => 'basket.item.remove', 'uses' => 'BasketController@delete']);
+    Route::get('{id}/inc',['as' => 'basket.item.inc', 'uses' => 'BasketController@inc']);
+    Route::get('{id}/dec',['as' => 'basket.item.dec', 'uses' => 'BasketController@dec']);
     Route::get('destroy',['as' => 'basket.destroy', 'uses' => 'BasketController@destroy']);
     Route::get('debug',['as' => 'basket.debug', 'uses' => 'BasketController@debug']);
+
+    Route::get('demo', ['as' => 'basket.demo', 'uses' => 'BasketController@demo']);
 });

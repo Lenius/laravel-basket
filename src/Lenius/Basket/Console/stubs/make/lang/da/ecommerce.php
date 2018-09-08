@@ -13,5 +13,7 @@ return [
     |
     */
 
-    'add' => 'Tilføj',
+    'add'    => 'Tilføj',
+    'update' => 'Opdater',
+    'total'  => 'Total',
 ];
