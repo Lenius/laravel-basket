@@ -79,16 +79,30 @@ class EcommerceCommand extends Command
         $this->exportJs();
 
         if (!$this->option('views')) {
+            
             $this->compileControllers();
 
-            file_put_contents(
-                base_path('routes/web.php'),
-                file_get_contents(__DIR__.'/stubs/make/routes.stub'),
-                FILE_APPEND
-            );
+            $this->exportRoutes();
         }
 
         $this->info('Ecommerce installed');
+    }
+
+    protected function exportRoutes()
+    {
+        $routes = file_get_contents(base_path('routes/web.php'));
+
+        if (preg_match( '/\/\* Ecommerce \*\//', $routes, $match ) && !$this->option('force')) {
+            if (!$this->confirm("The routes already exists. Do you want to replace it?")) {
+                return;
+            }
+        }
+
+        file_put_contents(
+            base_path('routes/web.php'),
+            file_get_contents(__DIR__.'/stubs/make/routes.stub'),
+            FILE_APPEND
+        );
     }
 
     protected function compileControllers()
