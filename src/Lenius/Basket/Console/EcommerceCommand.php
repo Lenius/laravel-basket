@@ -79,7 +79,6 @@ class EcommerceCommand extends Command
         $this->exportJs();
 
         if (!$this->option('views')) {
-            
             $this->compileControllers();
 
             file_put_contents(
@@ -140,7 +139,7 @@ class EcommerceCommand extends Command
         }
     }
 
-     /**
+    /**
      * Export the ecommerce js files.
      *
      * @return void
