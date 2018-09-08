@@ -21,7 +21,6 @@
 
 namespace Lenius\Basket;
 
-use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 use Lenius\Basket\Identifier\Cookie as CookieIdentifier;
 use Lenius\Basket\Storage\LaravelSession as SessionStore;

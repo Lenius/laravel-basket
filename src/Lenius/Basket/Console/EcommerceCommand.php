@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: firma
  * Date: 9/8/18
- * Time: 12:23 AM
+ * Time: 12:23 AM.
  */
 
 namespace Lenius\Basket\Console;
@@ -21,9 +21,8 @@ class EcommerceCommand extends Command
      * @var array
      */
     protected $views = [
-        'ecommerce/basket.stub' => 'ecommerce/basket.blade.php'
+        'ecommerce/basket.stub' => 'ecommerce/basket.blade.php',
     ];
-
 
     /**
      * The name and signature of the console command.
@@ -52,7 +51,7 @@ class EcommerceCommand extends Command
 
         $this->exportViews();
 
-        $this->info("Ecommerce handler");
+        $this->info('Ecommerce handler');
     }
 
     /**
@@ -62,11 +61,11 @@ class EcommerceCommand extends Command
      */
     protected function createDirectories()
     {
-        if (! is_dir($directory = resource_path('views/layouts'))) {
+        if (!is_dir($directory = resource_path('views/layouts'))) {
             mkdir($directory, 0755, true);
         }
 
-        if (! is_dir($directory = resource_path('views/ecommerce'))) {
+        if (!is_dir($directory = resource_path('views/ecommerce'))) {
             mkdir($directory, 0755, true);
         }
     }
@@ -79,8 +78,8 @@ class EcommerceCommand extends Command
     protected function exportViews()
     {
         foreach ($this->views as $key => $value) {
-            if (file_exists($view = resource_path('views/'.$value)) && ! $this->option('force')) {
-                if (! $this->confirm("The [{$value}] view already exists. Do you want to replace it?")) {
+            if (file_exists($view = resource_path('views/'.$value)) && !$this->option('force')) {
+                if (!$this->confirm("The [{$value}] view already exists. Do you want to replace it?")) {
                     continue;
                 }
             }
@@ -91,5 +90,4 @@ class EcommerceCommand extends Command
             );
         }
     }
-
 }
