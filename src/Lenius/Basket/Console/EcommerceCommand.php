@@ -68,7 +68,6 @@ class EcommerceCommand extends Command
         $this->exportLanguages();
 
         if (!$this->option('views')) {
-
             $this->compileControllers();
 
             file_put_contents(
@@ -84,7 +83,6 @@ class EcommerceCommand extends Command
     protected function compileControllers()
     {
         foreach ($this->controller as $stub => $value) {
-
             if (file_exists($controller = app_path('Http/Controllers/'.$value)) && !$this->option('force')) {
                 if (!$this->confirm("The [{$value}] controller already exists. Do you want to replace it?")) {
                     continue;
@@ -94,7 +92,7 @@ class EcommerceCommand extends Command
             $data = str_replace(
                 '{{namespace}}',
                 $this->getAppNamespace(),
-                file_get_contents(__DIR__.'/stubs/make/controllers/'. $stub)
+                file_get_contents(__DIR__.'/stubs/make/controllers/'.$stub)
             );
 
             file_put_contents(
