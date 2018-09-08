@@ -198,8 +198,6 @@ class EcommerceCommand extends Command
                 }
             }
 
-            $this->info(__DIR__.'/stubs/make/lang/'.$value);
-
             copy(
                 __DIR__.'/stubs/make/lang/'.$value,
                 $lang
