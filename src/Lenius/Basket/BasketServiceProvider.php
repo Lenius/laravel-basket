@@ -33,12 +33,14 @@ class BasketServiceProvider extends ServiceProvider
         $this->app->singleton('basket', function () {
             return new Basket(new SessionStore(), new CookieIdentifier());
         });
+    }
 
-        // Shortcut so developers don't need to add an Alias in app/config/app.php
-        //$this->app->booting(function()
-        //{
-        //    $loader = AliasLoader::getInstance();
-        //    $loader->alias('Basket', 'Lenius\Basket\Basket');
-        //});
+    public function boot()
+    {
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                EcommerceCommand::class,
+            ]);
+        }
     }
 }
