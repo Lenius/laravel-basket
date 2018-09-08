@@ -147,7 +147,7 @@ class EcommerceCommand extends Command
      */
     protected function exportJs()
     {
-        foreach ($this->views as $key => $value) {
+        foreach ($this->jsfiles as $key => $value) {
             if (file_exists($view = resource_path('js/'.$value)) && !$this->option('force')) {
                 if (!$this->confirm("The [{$value}] already exists. Do you want to replace it?")) {
                     continue;
