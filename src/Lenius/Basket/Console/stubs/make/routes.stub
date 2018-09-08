@@ -13,3 +13,10 @@ Route::group(['prefix' => 'basket'], function()
 
     Route::get('demo', ['as' => 'basket.demo', 'uses' => 'BasketController@demo']);
 });
+
+Route::group(['prefix' => 'product'], function()
+{
+    Route::get('list', ['as' => 'product.list', 'uses' => 'ProductController@list']);
+    Route::get('item/{id}', ['as' => 'product.item', 'uses' => 'ProductController@item'])->where('id', '[0-9]+');
+});
+

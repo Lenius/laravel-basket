@@ -1,8 +1,8 @@
 {
     "name": "lenius/laravel-basket",
-    "description": "Shopping basket package",
+    "description": "Shopping basket package for Laravel 5",
     "homepage": "https://github.com/Lenius/laravel-basket",
-    "keywords": ["e-commerce", "shopping"],
+    "keywords": ["laravel", "framework", "Laravel-Basket", "Laravel Basket", "e-commerce", "lenius"],
     "license": "MIT",
     "authors": [
         {
@@ -12,7 +12,7 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "php": ">=7.0.0",
+        "php": "^7.1",
         "laravel/framework": "5.*",
         "lenius/basket": "~2.0"
     },

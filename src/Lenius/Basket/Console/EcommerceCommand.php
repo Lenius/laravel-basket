@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: firma
- * Date: 9/8/18
- * Time: 12:23 AM.
- */
 
 namespace Lenius\Basket\Console;
 
@@ -22,6 +16,16 @@ class EcommerceCommand extends Command
      */
     protected $views = [
         'ecommerce/basket.stub' => 'ecommerce/basket.blade.php',
+    ];
+
+    /**
+     * The controllers that need to be exported.
+     *
+     * @var array
+     */
+    protected $controller = [
+        'BasketController.stub'  => 'BasketController.php',
+        'ProductController.stub' => 'ProductController.php',
     ];
 
     /**
@@ -64,10 +68,8 @@ class EcommerceCommand extends Command
         $this->exportLanguages();
 
         if (!$this->option('views')) {
-            file_put_contents(
-                app_path('Http/Controllers/BasketController.php'),
-                $this->compileControllerStub()
-            );
+
+            $this->compileControllers();
 
             file_put_contents(
                 base_path('routes/web.php'),
@@ -77,6 +79,29 @@ class EcommerceCommand extends Command
         }
 
         $this->info('Ecommerce installed');
+    }
+
+    protected function compileControllers()
+    {
+        foreach ($this->controller as $stub => $value) {
+
+            if (file_exists($controller = app_path('Http/Controllers/'.$value)) && !$this->option('force')) {
+                if (!$this->confirm("The [{$value}] controller already exists. Do you want to replace it?")) {
+                    continue;
+                }
+            }
+
+            $data = str_replace(
+                '{{namespace}}',
+                $this->getAppNamespace(),
+                file_get_contents(__DIR__.'/stubs/make/controllers/'. $stub)
+            );
+
+            file_put_contents(
+                $controller,
+                $data
+            );
+        }
     }
 
     /**
@@ -143,19 +168,5 @@ class EcommerceCommand extends Command
                 $lang
             );
         }
-    }
-
-    /**
-     * Compiles the BasketController stub.
-     *
-     * @return string
-     */
-    protected function compileControllerStub()
-    {
-        return str_replace(
-            '{{namespace}}',
-            $this->getAppNamespace(),
-            file_get_contents(__DIR__.'/stubs/make/controllers/BasketController.stub')
-        );
     }
 }
