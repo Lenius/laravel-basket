@@ -24,7 +24,17 @@ class BasketController extends Controller
      */
     public function index()
     {
-        return view('ecommerce.basket');
+        $data['product'] = [
+            'id' => 1,
+            'name' => 'Mouse 1',
+            'price' => 100,
+            'quantity' => 1,
+            'tax' => 25,
+            'weight' => 200,
+            'options' => json_decode('[{"name":"color", "type":"dropdown", "label":"Chose color", "required":false, "selected":null, "items":[{"name":"pink", "price":20, "weight":50}]}]')
+        ];
+
+        return view('ecommerce.basket')->with($data);
     }
 
     /**

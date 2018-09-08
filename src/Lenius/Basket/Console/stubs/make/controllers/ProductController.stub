@@ -25,7 +25,7 @@ class ProductController extends Controller
                 'quantity' => 1,
                 'tax' => 25,
                 'weight' => 200,
-                'product_option' => json_decode('[{"name":"color", "type":"dropdown", "label":"Chose color", "required":false, "selected":null, "items":[{"name":"pink", "price":20, "weight":50}]}]')
+                'options' => json_decode('[{"name":"color", "type":"dropdown", "label":"Chose color", "required":false, "selected":null, "items":[{"name":"pink", "price":20, "weight":50}]}]')
             ],
 
             [

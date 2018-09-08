@@ -19,6 +19,15 @@ class EcommerceCommand extends Command
     ];
 
     /**
+     * The js files that need to be exported.
+     *
+     * @var array
+     */
+    protected $jsfiles = [
+        'components/Product.vue' => 'components/ecommerce/Product.vue',
+    ];
+
+    /**
      * The controllers that need to be exported.
      *
      * @var array
@@ -67,7 +76,10 @@ class EcommerceCommand extends Command
 
         $this->exportLanguages();
 
+        $this->exportJs();
+
         if (!$this->option('views')) {
+            
             $this->compileControllers();
 
             file_put_contents(
@@ -117,11 +129,38 @@ class EcommerceCommand extends Command
             mkdir($directory, 0755, true);
         }
 
+        if (!is_dir($directory = resource_path('js/components/ecommerce'))) {
+            mkdir($directory, 0755, true);
+        }
+
         foreach ($this->languages as $key => $value) {
             if (!is_dir($directory = resource_path('lang/'.$key))) {
                 mkdir($directory, 0755, true);
             }
         }
+    }
+
+     /**
+     * Export the ecommerce js files.
+     *
+     * @return void
+     */
+    protected function exportJs()
+    {
+        foreach ($this->views as $key => $value) {
+            if (file_exists($view = resource_path('js/'.$value)) && !$this->option('force')) {
+                if (!$this->confirm("The [{$value}] already exists. Do you want to replace it?")) {
+                    continue;
+                }
+            }
+
+            copy(
+                __DIR__.'/stubs/make/js/'.$key,
+                $view
+            );
+        }
+
+        $this->info('remember to run: npm run dev');
     }
 
     /**
