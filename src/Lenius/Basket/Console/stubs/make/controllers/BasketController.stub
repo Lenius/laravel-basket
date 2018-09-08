@@ -1,0 +1,78 @@
+<?php
+
+namespace {{namespace}}Http\Controllers;
+
+use Illuminate\Http\Request;
+use Lenius\Basket\Facades\Basket;
+
+class BasketController extends Controller
+{
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        //$this->middleware('auth');
+    }
+
+    /**
+     * Show the basket.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('ecommerce.basket');
+    }
+
+    /**
+     * Add demo data to basket
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function demo()
+    {
+        Basket::insert(array(
+            'id'       => '1',
+            'name'     => 'Mouse',
+            'price'    => 100,
+            'quantity' => 1,
+            'tax'      => 25,
+            'weight' => 200
+        ));
+
+        Basket::insert(array(
+            'id'       => '2',
+            'name'     => 'Pc',
+            'price'    => 130,
+            'quantity' => 2,
+            'tax'      => 25,
+            'weight' => 200
+        ));
+
+        return redirect()->route('basket')->with('status', 'Card got demo data');
+    }
+
+    /**
+     * Show basket debug.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function debug()
+    {
+        dd(Basket::contents(true));
+    }
+
+    /**
+     * Destroy basket.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy()
+    {
+        Basket::destroy();
+        return redirect()->route('basket')->with('status', 'Card destroyed!');
+    }
+}

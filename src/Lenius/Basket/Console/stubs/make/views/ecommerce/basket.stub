@@ -1,1 +1,9 @@
-hoho
+<h3>Ecommerce</h3>
+
+@if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+@endif
+
+<a href="{{route('basket.demo')}}">Add demo data</a> - <a href="{{route('basket.debug')}}">Debug</a> - <a href="{{route('basket.destroy')}}">Destroy</a>

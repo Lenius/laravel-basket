@@ -25,12 +25,22 @@ class EcommerceCommand extends Command
     ];
 
     /**
+     * Languages supported
+     *
+     * @var array
+     */
+    protected $languages = [
+        'da' => 'da/ecommerce.php',
+        'en' => 'en/ecommerce.php',
+    ];
+
+    /**
      * The name and signature of the console command.
      *
      * @var string
      */
     protected $signature = 'make:ecommerce
-                    {--views : Only scaffold the authentication views}
+                    {--views : Only scaffold the ecommerce views}
                     {--force : Overwrite existing views by default}';
 
     /**
@@ -51,7 +61,22 @@ class EcommerceCommand extends Command
 
         $this->exportViews();
 
-        $this->info('Ecommerce handler');
+        $this->exportLanguages();
+
+        if (! $this->option('views')) {
+            file_put_contents(
+                app_path('Http/Controllers/BasketController.php'),
+                $this->compileControllerStub()
+            );
+
+            file_put_contents(
+                base_path('routes/web.php'),
+                file_get_contents(__DIR__.'/stubs/make/routes.stub'),
+                FILE_APPEND
+            );
+        }
+
+        $this->info('Ecommerce installed');
     }
 
     /**
@@ -67,6 +92,12 @@ class EcommerceCommand extends Command
 
         if (!is_dir($directory = resource_path('views/ecommerce'))) {
             mkdir($directory, 0755, true);
+        }
+
+        foreach ($this->languages as $key => $value) {
+            if (!is_dir($directory = resource_path('lang/'.$key))) {
+                mkdir($directory, 0755, true);
+            }
         }
     }
 
@@ -89,5 +120,42 @@ class EcommerceCommand extends Command
                 $view
             );
         }
+    }
+
+    /**
+     * Export the ecommerce languages.
+     *
+     * @return void
+     */
+    protected function exportLanguages()
+    {
+        foreach ($this->languages as $key => $value) {
+            if (file_exists($lang = resource_path('lang/'.$value)) && !$this->option('force')) {
+                if (!$this->confirm("The [{$value}] language already exists. Do you want to replace it?")) {
+                    continue;
+                }
+            }
+
+            $this->info(__DIR__.'/stubs/make/lang/'.$value);
+
+            copy(
+                __DIR__.'/stubs/make/lang/'.$value,
+                $lang
+            );
+        }
+    }
+
+    /**
+     * Compiles the BasketController stub.
+     *
+     * @return string
+     */
+    protected function compileControllerStub()
+    {
+        return str_replace(
+            '{{namespace}}',
+            $this->getAppNamespace(),
+            file_get_contents(__DIR__.'/stubs/make/controllers/BasketController.stub')
+        );
     }
 }
