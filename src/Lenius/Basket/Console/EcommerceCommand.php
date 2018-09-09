@@ -26,8 +26,8 @@ class EcommerceCommand extends Command
      * @var array
      */
     protected $jsfiles = [
-        'components/Product.vue' => 'components/ecommerce/Product.vue',
-        'components/Admin.vue'   => 'components/ecommerce/Admin.vue',
+        'components/ecommerce/Product.vue' => 'components/ecommerce/Product.vue',
+        'components/ecommerce/Admin.vue'   => 'components/ecommerce/Admin.vue',
     ];
 
     /**
@@ -36,9 +36,9 @@ class EcommerceCommand extends Command
      * @var array
      */
     protected $controller = [
-        'BaseController.stub'    => 'Ecommerce/BaseController.php',
-        'BasketController.stub'  => 'Ecommerce/BasketController.php',
-        'ProductController.stub' => 'Ecommerce/ProductController.php',
+        'Ecommerce/BaseController.stub'    => 'Ecommerce/BaseController.php',
+        'Ecommerce/BasketController.stub'  => 'Ecommerce/BasketController.php',
+        'Ecommerce/ProductController.stub' => 'Ecommerce/ProductController.php',
     ];
 
     /**
