@@ -17,7 +17,7 @@
                         @endif
 
                         <!-- Vue.component('product', require('./components/ecommerce/Product.vue')) -->
-                        <product src="{{ json_encode()  }}"></product>
+                        <product src="{{ json_encode($product)  }}"></product>
 
                     </div>
                 </div>
