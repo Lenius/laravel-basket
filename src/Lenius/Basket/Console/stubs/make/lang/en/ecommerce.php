@@ -16,4 +16,5 @@ return [
     'add'    => 'Add',
     'update' => 'Update',
     'total'  => 'Total',
+    'empty'  => 'Empty basket',
 ];

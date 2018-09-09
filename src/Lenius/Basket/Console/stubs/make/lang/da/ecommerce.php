@@ -16,4 +16,5 @@ return [
     'add'    => 'Tilføj',
     'update' => 'Opdater',
     'total'  => 'Total',
+    'empty'  => 'Tøm kurv',
 ];
