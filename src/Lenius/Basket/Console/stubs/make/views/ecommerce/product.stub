@@ -18,13 +18,12 @@
 
                         <!-- Vue.component('product', require('./components/ecommerce/Product.vue')) -->
                         <product src="{{ json_encode($product)  }}"></product>
-
+                            <hr/>
+                        <admin src="{{ json_encode($product)  }}"></admin>
                     </div>
                 </div>
 
             </div>
         </div>
-
-
     </div>
 @endsection
