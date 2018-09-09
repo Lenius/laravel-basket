@@ -27,7 +27,6 @@ class ProductController extends BaseController
         return view('ecommerce.products')->with(['products' => $this->products->all()]);
     }
 
-
     /**
      * Return single product
      *
@@ -37,7 +36,6 @@ class ProductController extends BaseController
     {
         return $this->products->where('id', $id);
     }
-
 
     /**
      * Return products

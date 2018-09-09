@@ -15,6 +15,7 @@
                                 {{ session('status') }}
                             </div>
                         @endif
+                        @if(Basket::contents())
                         <form action="{{route('basket')}}" method="POST">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -35,7 +36,7 @@
                                 <tbody>
                                 @foreach(Basket::contents() as $index => $item)
                                     <tr>
-                                        <td>{{$item->name}}
+                                        <td><a href="{{route('product.item',[$item->id])}}">{{$item->name}}</a>
                                             @if( $item->hasOptions())
                                                 <br/><br/> Tilvalg <br/>
                                                 @foreach($item->options as $option)
@@ -66,8 +67,11 @@
                                     <td>{{ Basket::total()}}</td>
                                 </tr>
                             </table>
-                            <input type="submit" value="{{ __('ecommerce.update') }}">
+                            <input type="submit" value="{{ __('ecommerce.update') }}" class="btn btn-success"> <a href="{{route('basket.destroy')}}" value="" class="btn btn-danger">{{ __('ecommerce.empty') }}</a>
                         </form>
+                        @else
+                                Basket empty try add some demo <a href="{{route('basket.demo')}}">data</a>
+                        @endif
                     </div>
                 </div>
 
@@ -76,27 +80,5 @@
 
             </div>
         </div>
-
-
-        <!-- Example row of columns -->
-        <div class="row justify-content-center">
-            <div class="col-md-4">
-                <h2>Add demo data</h2>
-                <p>Add demo data to the basket</p>
-                <p><a class="btn btn-secondary" href="{{route('basket.demo')}}" role="button">Add &raquo;</a></p>
-            </div>
-            <div class="col-md-4">
-                <h2>Debug</h2>
-                <p>Show the content of the basket</p>
-                <p><a class="btn btn-secondary" href="{{route('basket.debug')}}" role="button">Debug &raquo;</a></p>
-            </div>
-            <div class="col-md-4">
-                <h2>Destroy</h2>
-                <p>Destroy the basket</p>
-                <p><a class="btn btn-secondary" href="{{route('basket.destroy')}}" role="button">Destroy &raquo;</a></p>
-            </div>
-        </div>
-
-
     </div>
 @endsection
