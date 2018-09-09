@@ -1,15 +1,12 @@
 <?php
 
-namespace {{namespace}}Http\Controllers;
+namespace {{namespace}}Http\Controllers\Ecommerce;
 
 use Illuminate\Http\Request;
 use Lenius\Basket\Facades\Basket;
 
-class ProductController extends Controller
+class ProductController extends BaseController
 {
-    protected $products = [];
-
-
     /**
      * Create a new controller instance.
      *
@@ -17,26 +14,7 @@ class ProductController extends Controller
      */
     public function __construct()
     {
-        $this->products = [
-            [
-                'id' => '1',
-                'name' => 'Mouse 1',
-                'price' => 100,
-                'quantity' => 1,
-                'tax' => 25,
-                'weight' => 200,
-                'options' => json_decode('[{"name":"color", "type":"dropdown", "label":"Chose color", "required":false, "selected":null, "items":[{"name":"pink", "price":20, "weight":50}]}]')
-            ],
-
-            [
-                'id' => '2',
-                'name' => 'Mouse 2',
-                'price' => 100,
-                'quantity' => 1,
-                'tax' => 25,
-                'weight' => 200
-            ]
-        ];
+        parent::__construct();
     }
 
     /**
@@ -46,7 +24,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('ecommerce.basket');
+        return view('ecommerce.products')->with(['products' => $this->products->all()]);
     }
 
 
@@ -57,7 +35,7 @@ class ProductController extends Controller
      */
     public function item($id)
     {
-        return collect($this->products)->where('id', $id);
+        return $this->products->where('id', $id);
     }
 
 
@@ -66,8 +44,8 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function list()
+    public function items()
     {
-        return collect($this->products)->all();
+        return $this->products->all();
     }
 }

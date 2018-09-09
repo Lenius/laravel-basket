@@ -1,11 +1,11 @@
 <?php
 
-namespace {{namespace}}Http\Controllers;
+namespace {{namespace}}Http\Controllers\Ecommerce;
 
 use Illuminate\Http\Request;
 use Lenius\Basket\Facades\Basket;
 
-class BasketController extends Controller
+class BasketController extends BaseController
 {
     /**
      * Create a new controller instance.
@@ -14,7 +14,7 @@ class BasketController extends Controller
      */
     public function __construct()
     {
-        //$this->middleware('auth');
+        parent::__construct();
     }
 
     /**

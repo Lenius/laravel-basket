@@ -1,6 +1,6 @@
 
 /* Ecommerce */
-Route::group(['prefix' => 'basket'], function()
+Route::group(['prefix' => 'basket', 'namespace' => 'Ecommerce'], function()
 {
     Route::get('/', ['as' => 'basket', 'uses' => 'BasketController@index']);
     Route::post('/', ['as' => 'basket', 'uses' => 'BasketController@update']);
@@ -14,9 +14,10 @@ Route::group(['prefix' => 'basket'], function()
     Route::get('demo', ['as' => 'basket.demo', 'uses' => 'BasketController@demo']);
 });
 
-Route::group(['prefix' => 'product'], function()
+Route::group(['prefix' => 'product', 'namespace' => 'Ecommerce'], function()
 {
-    Route::get('list', ['as' => 'product.list', 'uses' => 'ProductController@list']);
+    Route::get('/', ['as' => 'product.index', 'uses' => 'ProductController@index']);
+    Route::get('items', ['as' => 'product.items', 'uses' => 'ProductController@items']);
     Route::get('item/{id}', ['as' => 'product.item', 'uses' => 'ProductController@item'])->where('id', '[0-9]+');
 });
 

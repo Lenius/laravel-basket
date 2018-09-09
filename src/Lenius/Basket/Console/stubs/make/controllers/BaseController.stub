@@ -1,0 +1,39 @@
+<?php
+
+namespace {{namespace}}Http\Controllers\Ecommerce;
+
+use App\Http\Controllers\Controller;
+
+abstract class BaseController extends Controller
+{
+    protected $products = [];
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->products = collect([
+            [
+                'id' => '1',
+                'name' => 'Mouse 1',
+                'price' => 100,
+                'quantity' => 1,
+                'tax' => 25,
+                'weight' => 200,
+                'options' => json_decode('[{"name":"color", "type":"dropdown", "label":"Chose color", "required":false, "selected":null, "items":[{"name":"pink", "price":20, "weight":50}]}]')
+            ],
+
+            [
+                'id' => '2',
+                'name' => 'Mouse 2',
+                'price' => 100,
+                'quantity' => 1,
+                'tax' => 25,
+                'weight' => 200
+            ]
+        ]);
+    }
+}

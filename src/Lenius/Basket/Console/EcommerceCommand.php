@@ -16,6 +16,7 @@ class EcommerceCommand extends Command
      */
     protected $views = [
         'ecommerce/basket.stub' => 'ecommerce/basket.blade.php',
+        'ecommerce/products.stub' => 'ecommerce/products.blade.php',
     ];
 
     /**
@@ -33,8 +34,9 @@ class EcommerceCommand extends Command
      * @var array
      */
     protected $controller = [
-        'BasketController.stub'  => 'BasketController.php',
-        'ProductController.stub' => 'ProductController.php',
+        'BaseController.stub'    => 'Ecommerce/BaseController.php',
+        'BasketController.stub'  => 'Ecommerce/BasketController.php',
+        'ProductController.stub' => 'Ecommerce/ProductController.php',
     ];
 
     /**
@@ -143,6 +145,10 @@ class EcommerceCommand extends Command
         }
 
         if (!is_dir($directory = resource_path('js/components/ecommerce'))) {
+            mkdir($directory, 0755, true);
+        }
+
+        if (!is_dir($directory = app_path('Http/Controllers/Ecommerce'))) {
             mkdir($directory, 0755, true);
         }
 
