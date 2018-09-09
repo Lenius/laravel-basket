@@ -16,6 +16,7 @@ class EcommerceCommand extends Command
      */
     protected $views = [
         'ecommerce/basket.stub'   => 'ecommerce/basket.blade.php',
+        'ecommerce/product.stub' => 'ecommerce/product.blade.php',
         'ecommerce/products.stub' => 'ecommerce/products.blade.php',
     ];
 

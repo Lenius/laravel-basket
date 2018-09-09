@@ -34,7 +34,7 @@ class ProductController extends BaseController
      */
     public function item($id)
     {
-        return $this->products->where('id', $id);
+        return view('ecommerce.product')->with(['product' =>$this->products->firstWhere('id', $id)]);
     }
 
     /**

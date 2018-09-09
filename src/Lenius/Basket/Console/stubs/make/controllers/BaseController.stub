@@ -23,7 +23,7 @@ abstract class BaseController extends Controller
                 'quantity' => 1,
                 'tax' => 25,
                 'weight' => 200,
-                'options' => json_decode('[{"name":"color", "type":"dropdown", "label":"Chose color", "required":false, "selected":null, "items":[{"name":"pink", "price":20, "weight":50}]}]')
+                'options' => json_decode('[{"name":"color", "type":"dropdown", "label":"Chose color", "required":false, "selected":null, "items":[{"name":"pink", "price":20, "weight":50},{"name":"yellow", "price":-10, "weight":50}]}, {"name":"size", "type":"dropdown", "label":"Chose size", "required":false, "selected":null, "items":[{"name":"Small", "price":20, "weight":50},{"name":"Large", "price":-10, "weight":50}]}]')
             ],
 
             [
@@ -32,7 +32,8 @@ abstract class BaseController extends Controller
                 'price' => 100,
                 'quantity' => 1,
                 'tax' => 25,
-                'weight' => 200
+                'weight' => 200,
+                'options' => []
             ]
         ]);
     }

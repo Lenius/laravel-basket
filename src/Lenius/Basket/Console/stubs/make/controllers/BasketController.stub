@@ -111,7 +111,7 @@ class BasketController extends BaseController
             }
         }
 
-        return redirect()->route('basket')->with('status', 'item '.$itemIdentifier.' inc!');
+        return redirect()->route('basket');
     }
 
     /**
@@ -129,7 +129,7 @@ class BasketController extends BaseController
             }
         }
 
-        return redirect()->route('basket')->with('status', 'item '.$itemIdentifier.' dec!');
+        return redirect()->route('basket');
     }
 
     /**
@@ -156,5 +156,45 @@ class BasketController extends BaseController
         Basket::destroy();
         
         return redirect()->route('basket')->with('status', 'Card destroyed!');
+    }
+
+    /**
+     * Add item to basket.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function add(Request $request)
+    {
+
+        $product = (object)$this->products->firstWhere('id', $request->input('id'));
+
+        $options = json_decode(json_encode($request->input('options')));
+
+        $item = [
+            'id'         => $product->id,
+            'name'       => $product->name,
+            'tax'       => $product->tax,
+            'price'      => $product->price,
+            'weight'     => $product->weight,
+            'quantity'   => $request->input('quantity', 1),
+
+        ];
+
+        if(is_array($options))
+        {
+            foreach($options as $option)
+            {
+                $item['options'][] =  [
+                    'name' => $option->name,
+                    'label' => $option->selected->name,
+                    'value' => $option->selected->name,
+                    'price' => $option->selected->price,
+                    'weight' => $option->selected->weight,
+                ];
+            }
+        }
+
+        // Add the item to the cart
+        return Basket::insert($item);
     }
 }

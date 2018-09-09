@@ -4,7 +4,7 @@ Route::group(['prefix' => 'basket', 'namespace' => 'Ecommerce'], function()
 {
     Route::get('/', ['as' => 'basket', 'uses' => 'BasketController@index']);
     Route::post('/', ['as' => 'basket', 'uses' => 'BasketController@update']);
-    Route::any('{id}/add',['as' => 'basket.item.add', 'uses' => 'BasketController@add'])->where('id', '[0-9]+');
+    Route::any('add',['as' => 'basket.item.add', 'uses' => 'BasketController@add']);
     Route::get('{id}/remove',['as' => 'basket.item.remove', 'uses' => 'BasketController@delete']);
     Route::get('{id}/inc',['as' => 'basket.item.inc', 'uses' => 'BasketController@inc']);
     Route::get('{id}/dec',['as' => 'basket.item.dec', 'uses' => 'BasketController@dec']);
