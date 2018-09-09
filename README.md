@@ -11,6 +11,20 @@ Using [composer](https://packagist.org/packages/lenius/laravel-basket):
 ```bash
 $ composer require lenius/laravel-basket
 ```
+Set up demo with artisan
+
+```bash 
+$ php artisan make:ecommerce
+``` 
+
+Install npm dependencies
+
+```bash 
+$ npm install v-money
+$ npm install vue-sortable
+$ npm install vuedraggable
+``` 
+
 You should then be good to go and be able to access the basket using the following static interface:
 
 ```php
