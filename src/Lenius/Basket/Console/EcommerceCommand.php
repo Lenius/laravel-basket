@@ -27,7 +27,7 @@ class EcommerceCommand extends Command
      */
     protected $jsfiles = [
         'components/Product.vue' => 'components/ecommerce/Product.vue',
-        'components/Admin.vue' => 'components/ecommerce/Admin.vue',
+        'components/Admin.vue'   => 'components/ecommerce/Admin.vue',
     ];
 
     /**
