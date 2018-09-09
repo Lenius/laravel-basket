@@ -15,7 +15,7 @@ class EcommerceCommand extends Command
      * @var array
      */
     protected $views = [
-        'ecommerce/basket.stub' => 'ecommerce/basket.blade.php',
+        'ecommerce/basket.stub'   => 'ecommerce/basket.blade.php',
         'ecommerce/products.stub' => 'ecommerce/products.blade.php',
     ];
 
@@ -81,7 +81,6 @@ class EcommerceCommand extends Command
         $this->exportJs();
 
         if (!$this->option('views')) {
-            
             $this->compileControllers();
 
             $this->exportRoutes();
@@ -94,8 +93,8 @@ class EcommerceCommand extends Command
     {
         $routes = file_get_contents(base_path('routes/web.php'));
 
-        if (preg_match( '/\/\* Ecommerce \*\//', $routes, $match ) && !$this->option('force')) {
-            if (!$this->confirm("The routes already exists. Do you want to replace it?")) {
+        if (preg_match('/\/\* Ecommerce \*\//', $routes, $match) && !$this->option('force')) {
+            if (!$this->confirm('The routes already exists. Do you want to replace it?')) {
                 return;
             }
         }
