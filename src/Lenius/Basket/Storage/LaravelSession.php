@@ -21,7 +21,7 @@
 namespace Lenius\Basket\Storage;
 
 use Illuminate\Support\Facades\Session;
-use Lenius\Basket\Item;
+use Lenius\Basket\ItemInterface;
 use Lenius\Basket\StorageInterface;
 
 /**
@@ -85,7 +85,7 @@ class LaravelSession implements StorageInterface
      *
      * @param mixed $identifier
      *
-     * @return bool|Item
+     * @return bool|ItemInterface
      *
      * @internal param mixed $id
      */
@@ -105,7 +105,7 @@ class LaravelSession implements StorageInterface
      *
      * @param mixed $identifier
      *
-     * @return bool|Item
+     * @return bool|ItemInterface
      *
      * @internal param mixed $id The item id
      */
@@ -125,7 +125,7 @@ class LaravelSession implements StorageInterface
      *
      * @param string $id The item id
      *
-     * @return bool|Item
+     * @return bool|ItemInterface
      */
     public function find($id)
     {
