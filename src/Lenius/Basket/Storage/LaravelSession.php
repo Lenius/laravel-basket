@@ -49,7 +49,7 @@ class LaravelSession implements StorageInterface
      *
      * @return void
      */
-    public function insertUpdate(Item $item)
+    public function insertUpdate(ItemInterface $item)
     {
         static::$cart[$this->id][$item->identifier] = $item;
 
