@@ -180,6 +180,26 @@ class EcommerceCommand extends Command
             );
         }
 
+        // append vuejs modules
+        $appConfig = file_get_contents(base_path('resources/js/app.js'));
+
+        if (preg_match('/\/\* Ecommerce \*\//', $appConfig, $match) && !$this->option('force')) {
+            if (!$this->confirm('The vuejs modules already exists in config. Do you want to replace it?')) {
+                return;
+            }
+        }
+
+        $data = str_replace(
+            'window.Vue = require(\'vue\');',
+            file_get_contents(__DIR__.'/stubs/make/vuejs.stub'),
+            $appConfig
+        );
+
+        file_put_contents(
+            base_path('resources/js/app.js'),
+            $data
+        );
+
         $this->info('remember to run: npm run dev');
     }
 
