@@ -14,6 +14,7 @@ $ composer require lenius/laravel-basket
 Set up demo with artisan
 
 ```bash 
+$ php artisan make:auth
 $ php artisan make:ecommerce
 ``` 
 
@@ -23,22 +24,27 @@ Install npm dependencies
 $ npm install v-money
 $ npm install vue-sortable
 $ npm install vuedraggable
+$ npm run dev
+$ php artisan serve
 ``` 
+
+Open http://localhost:8000/basket
+
 
 You should then be good to go and be able to access the basket using the following static interface:
 
 ```php
 //Format array of required info for item to be added to basket...
 $items = array(
-	'id' => 1,
-	'name' => 'Dog',
-	'price' => 120.00,
+	'id'       => 1,
+	'name'     => 'Dog',
+	'price'    => 120.00,
 	'quantity' => 1,
-    'weight' => 200
+	'weight'   => 200
 );
 
 //Make the insert...
-Basket::insert($items);
+Basket::insert(new Item($items));
 
 //Let's see what we have got in their...
 dd(Basket::totalItems());
@@ -51,14 +57,14 @@ the price of the item.
 In the below example we will use 25% for the tax rate.
 
 ```php
-Basket::insert(array(
+Basket::insert(new Item(array(
     'id'       => 'mouseid',
     'name'     => 'Mouse',
     'price'    => 100,
     'quantity' => 1,
     'tax'      => 25,
-    'weight' => 200
-));
+    'weight'   => 200
+)));
 ```
 
 ### Updating items in the Basket

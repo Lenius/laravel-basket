@@ -1,0 +1,6 @@
+window.Vue = require('vue');
+
+/* Ecommerce */
+Vue.component('product', require('./components/ecommerce/Product.vue').default);
+Vue.component('admin', require('./components/ecommerce/Admin.vue').default);
+
