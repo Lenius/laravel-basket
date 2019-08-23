@@ -17,4 +17,6 @@ return [
     'update' => 'Opdater',
     'total'  => 'Total',
     'empty'  => 'Tøm kurv',
+    'price'  => 'Pris',
+    'tax'    => 'Moms',
 ];

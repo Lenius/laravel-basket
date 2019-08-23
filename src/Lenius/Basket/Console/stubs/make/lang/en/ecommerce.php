@@ -17,4 +17,6 @@ return [
     'update' => 'Update',
     'total'  => 'Total',
     'empty'  => 'Empty basket',
+    'price'  => 'Price',
+    'tax'    => 'Tax',
 ];
