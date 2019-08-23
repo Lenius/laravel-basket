@@ -1,6 +1,8 @@
 <?php
 
-$excluded_folders = [];
+$excluded_folders = [
+    'vendor'
+];
 
 $finder = PhpCsFixer\Finder::create()
     ->exclude($excluded_folders)
