@@ -15,7 +15,7 @@
  *
  * @version production
  *
- * @link http://github.com/lenius/basket
+ * @see http://github.com/lenius/basket
  */
 
 namespace Lenius\Basket\Storage;
@@ -46,8 +46,6 @@ class LaravelSession implements StorageInterface
      * Add or update an item in the cart.
      *
      * @param Item $item The item to insert or update
-     *
-     * @return void
      */
     public function insertUpdate(ItemInterface $item)
     {
@@ -67,7 +65,7 @@ class LaravelSession implements StorageInterface
     {
         $cart = &static::$cart[$this->id];
 
-        if (!$asArray) {
+        if (! $asArray) {
             return $cart;
         }
 
@@ -142,8 +140,6 @@ class LaravelSession implements StorageInterface
      * Remove an item from the cart.
      *
      * @param mixed $id
-     *
-     * @return void
      */
     public function remove($id)
     {
@@ -154,8 +150,6 @@ class LaravelSession implements StorageInterface
 
     /**
      * Destroy the cart.
-     *
-     * @return void
      */
     public function destroy()
     {
@@ -175,7 +169,7 @@ class LaravelSession implements StorageInterface
     {
         $this->id = $id;
 
-        if (!array_key_exists($this->id, static::$cart)) {
+        if (! array_key_exists($this->id, static::$cart)) {
             static::$cart[$this->id] = [];
         }
 
@@ -184,8 +178,6 @@ class LaravelSession implements StorageInterface
 
     /**
      * Return the current cart identifier.
-     *
-     * @return void
      */
     public function getIdentifier()
     {

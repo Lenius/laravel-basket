@@ -69,8 +69,6 @@ class EcommerceCommand extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return void
      */
     public function handle()
     {
@@ -82,7 +80,7 @@ class EcommerceCommand extends Command
 
         $this->exportJs();
 
-        if (!$this->option('views')) {
+        if (! $this->option('views')) {
             $this->compileControllers();
 
             $this->exportRoutes();
@@ -95,8 +93,8 @@ class EcommerceCommand extends Command
     {
         $routes = file_get_contents(base_path('routes/web.php'));
 
-        if (preg_match('/\/\* Ecommerce \*\//', $routes, $match) && !$this->option('force')) {
-            if (!$this->confirm('The routes already exists. Do you want to replace it?')) {
+        if (preg_match('/\/\* Ecommerce \*\//', $routes, $match) && ! $this->option('force')) {
+            if (! $this->confirm('The routes already exists. Do you want to replace it?')) {
                 return;
             }
         }
@@ -111,8 +109,8 @@ class EcommerceCommand extends Command
     protected function compileControllers()
     {
         foreach ($this->controller as $stub => $value) {
-            if (file_exists($controller = app_path('Http/Controllers/'.$value)) && !$this->option('force')) {
-                if (!$this->confirm("The [{$value}] controller already exists. Do you want to replace it?")) {
+            if (file_exists($controller = app_path('Http/Controllers/'.$value)) && ! $this->option('force')) {
+                if (! $this->confirm("The [{$value}] controller already exists. Do you want to replace it?")) {
                     continue;
                 }
             }
@@ -132,29 +130,27 @@ class EcommerceCommand extends Command
 
     /**
      * Create the directories for the files.
-     *
-     * @return void
      */
     protected function createDirectories()
     {
-        if (!is_dir($directory = resource_path('views/layouts'))) {
+        if (! is_dir($directory = resource_path('views/layouts'))) {
             mkdir($directory, 0755, true);
         }
 
-        if (!is_dir($directory = resource_path('views/ecommerce'))) {
+        if (! is_dir($directory = resource_path('views/ecommerce'))) {
             mkdir($directory, 0755, true);
         }
 
-        if (!is_dir($directory = resource_path('js/components/ecommerce'))) {
+        if (! is_dir($directory = resource_path('js/components/ecommerce'))) {
             mkdir($directory, 0755, true);
         }
 
-        if (!is_dir($directory = app_path('Http/Controllers/Ecommerce'))) {
+        if (! is_dir($directory = app_path('Http/Controllers/Ecommerce'))) {
             mkdir($directory, 0755, true);
         }
 
         foreach ($this->languages as $key => $value) {
-            if (!is_dir($directory = resource_path('lang/'.$key))) {
+            if (! is_dir($directory = resource_path('lang/'.$key))) {
                 mkdir($directory, 0755, true);
             }
         }
@@ -162,14 +158,12 @@ class EcommerceCommand extends Command
 
     /**
      * Export the ecommerce js files.
-     *
-     * @return void
      */
     protected function exportJs()
     {
         foreach ($this->jsfiles as $key => $value) {
-            if (file_exists($view = resource_path('js/'.$value)) && !$this->option('force')) {
-                if (!$this->confirm("The [{$value}] already exists. Do you want to replace it?")) {
+            if (file_exists($view = resource_path('js/'.$value)) && ! $this->option('force')) {
+                if (! $this->confirm("The [{$value}] already exists. Do you want to replace it?")) {
                     continue;
                 }
             }
@@ -183,8 +177,8 @@ class EcommerceCommand extends Command
         // append vuejs modules
         $appConfig = file_get_contents(base_path('resources/js/app.js'));
 
-        if (preg_match('/\/\* Ecommerce \*\//', $appConfig, $match) && !$this->option('force')) {
-            if (!$this->confirm('The vuejs modules already exists in config. Do you want to replace it?')) {
+        if (preg_match('/\/\* Ecommerce \*\//', $appConfig, $match) && ! $this->option('force')) {
+            if (! $this->confirm('The vuejs modules already exists in config. Do you want to replace it?')) {
                 return;
             }
         }
@@ -205,14 +199,12 @@ class EcommerceCommand extends Command
 
     /**
      * Export the ecommerce views.
-     *
-     * @return void
      */
     protected function exportViews()
     {
         foreach ($this->views as $key => $value) {
-            if (file_exists($view = resource_path('views/'.$value)) && !$this->option('force')) {
-                if (!$this->confirm("The [{$value}] view already exists. Do you want to replace it?")) {
+            if (file_exists($view = resource_path('views/'.$value)) && ! $this->option('force')) {
+                if (! $this->confirm("The [{$value}] view already exists. Do you want to replace it?")) {
                     continue;
                 }
             }
@@ -226,14 +218,12 @@ class EcommerceCommand extends Command
 
     /**
      * Export the ecommerce languages.
-     *
-     * @return void
      */
     protected function exportLanguages()
     {
         foreach ($this->languages as $key => $value) {
-            if (file_exists($lang = resource_path('lang/'.$value)) && !$this->option('force')) {
-                if (!$this->confirm("The [{$value}] language already exists. Do you want to replace it?")) {
+            if (file_exists($lang = resource_path('lang/'.$value)) && ! $this->option('force')) {
+                if (! $this->confirm("The [{$value}] language already exists. Do you want to replace it?")) {
                     continue;
                 }
             }

@@ -16,7 +16,7 @@
  *
  * @version production
  *
- * @link http://github.com/lenius/laravel-basket
+ * @see http://github.com/lenius/laravel-basket
  */
 
 namespace Lenius\Basket\Facades;
