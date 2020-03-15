@@ -18,7 +18,7 @@
  * @see http://github.com/lenius/basket
  */
 
-namespace Lenius\Basket\Storage;
+namespace Lenius\LaravelBasket\Storage;
 
 use Illuminate\Support\Facades\Session;
 use Lenius\Basket\ItemInterface;
@@ -45,7 +45,7 @@ class LaravelSession implements StorageInterface
     /**
      * Add or update an item in the cart.
      *
-     * @param Item $item The item to insert or update
+     * @param ItemInterface $item The item to insert or update
      */
     public function insertUpdate(ItemInterface $item)
     {

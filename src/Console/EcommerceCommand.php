@@ -1,6 +1,6 @@
 <?php
 
-namespace Lenius\Basket\Console;
+namespace Lenius\LaravelBasket\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Console\DetectsApplicationNamespace;

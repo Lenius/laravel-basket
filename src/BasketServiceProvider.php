@@ -19,7 +19,7 @@
  * @see http://github.com/lenius/laravel-basket
  */
 
-namespace Lenius\Basket;
+namespace Lenius\LaravelBasket;
 
 use Illuminate\Support\ServiceProvider;
 use Lenius\Basket\Console\EcommerceCommand;

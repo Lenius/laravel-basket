@@ -19,7 +19,7 @@
  * @see http://github.com/lenius/laravel-basket
  */
 
-namespace Lenius\Basket\Facades;
+namespace Lenius\LaravelBasket\Facades;
 
 class Basket extends \Illuminate\Support\Facades\Facade
 {
