@@ -14,7 +14,8 @@
     "require": {
         "php": ">=7.0.0",
         "lenius/basket": "~3.0",
-        "illuminate/support": "^8.0@dev"
+        "illuminate/support": "^8.0@dev",
+        "illuminate/console": "^8.0@dev"
     },
     "autoload": {
         "psr-4": {

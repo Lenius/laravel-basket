@@ -3,12 +3,9 @@
 namespace Lenius\LaravelBasket\Console;
 
 use Illuminate\Console\Command;
-use Illuminate\Console\DetectsApplicationNamespace;
 
 class EcommerceCommand extends Command
 {
-    use DetectsApplicationNamespace;
-
     /**
      * The views that need to be exported.
      *
