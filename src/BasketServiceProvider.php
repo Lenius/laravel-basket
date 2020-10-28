@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of Lenius Basket for Laravel 5, a PHP
+ * This file is part of Lenius Basket for Laravel 7-8, a PHP
  * package to provide a Service Provider and Facade for
  * the Lenius\Basket package.
  *
@@ -20,7 +20,6 @@
  */
 
 namespace Lenius\LaravelBasket;
-
 
 use Illuminate\Support\ServiceProvider;
 use Lenius\Basket\Basket;
