@@ -1,0 +1,12 @@
+parameters:
+    level: max
+    paths:
+        - src
+    reportUnmatchedIgnoredErrors: false
+    checkGenericClassInNonGenericObjectType: false
+    checkMissingIterableValueType: false
+    ignoreErrors:
+        - '#Function request not found.#'
+        - '#Call to static method uuid() on an unknown class Str.#'
+        - '#Call to static method queue() on an unknown class Cookie.#'
+        - '#Function cookie not found.#'
