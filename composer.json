@@ -12,12 +12,16 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "php": ">=7.0.0",
-        "lenius/basket": "~3.0"
+        "php": "^7.4|^8.0",
+        "lenius/basket": "master"
     },
     "require-dev": {
         "illuminate/support": "^7.0",
+        "phpstan/phpstan": "0.12.x-dev",
         "illuminate/console": "^7.0"
+    },
+    "config": {
+        "sort-packages": true
     },
     "autoload": {
         "psr-4": {
@@ -33,5 +37,10 @@
                 "Basket": "Lenius\\LaravelBasket\\Facades\\Basket"
             }
         }
+    },
+    "scripts": {
+        "stan": [
+            "vendor/bin/phpstan analyse"
+        ]
     }
 }
