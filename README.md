@@ -10,6 +10,7 @@ Using [composer](https://packagist.org/packages/lenius/laravel-basket):
 
 ```bash
 $ composer require lenius/laravel-basket
+$ composer require lenius/laravel-basket^4.0 (PHP7.4)
 ```
 Set up demo with artisan
 
