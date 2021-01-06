@@ -23,16 +23,16 @@ namespace Lenius\LaravelBasket;
 
 use Illuminate\Support\ServiceProvider;
 use Lenius\Basket\Basket;
-use Lenius\Basket\Identifier\Cookie as CookieIdentifier;
 use Lenius\LaravelBasket\Console\EcommerceCommand;
-use Lenius\LaravelBasket\Storage\LaravelSession as SessionStore;
+use Lenius\LaravelBasket\Identifier\LaravelCookie;
+use Lenius\LaravelBasket\Storage\LaravelSession;
 
 class BasketServiceProvider extends ServiceProvider
 {
     public function register()
     {
         $this->app->singleton('basket', function () {
-            return new Basket(new SessionStore(), new CookieIdentifier());
+            return new Basket(new LaravelSession(), new LaravelCookie());
         });
     }
 
