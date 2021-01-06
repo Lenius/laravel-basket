@@ -1,6 +1,6 @@
 {
     "name": "lenius/laravel-basket",
-    "description": "Shopping basket package for Laravel 6.x",
+    "description": "Shopping basket package for Laravel",
     "homepage": "https://github.com/Lenius/laravel-basket",
     "keywords": ["laravel", "framework", "Laravel-Basket", "Laravel Basket", "e-commerce", "lenius"],
     "license": "MIT",
